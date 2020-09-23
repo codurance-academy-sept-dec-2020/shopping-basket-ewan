@@ -5,8 +5,10 @@ import java.util.List;
 
 public class ShoppingBasket {
     private BasketID basketID;
+    private UserID userId;
 
-    public ShoppingBasket() {
+    public ShoppingBasket(UserID userId) {
+        this.userId = userId;
         basketID = new BasketID();
     }
 
@@ -24,5 +26,9 @@ public class ShoppingBasket {
 
     public BasketID getBasketId() {
         return basketID;
+    }
+
+    public UserID getUserId() {
+        return userId;
     }
 }

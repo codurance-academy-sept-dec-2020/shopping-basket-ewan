@@ -38,7 +38,7 @@ public class ShoppingBasketServiceShould {
 
     @Test
     void adds_order_item_through_product_service_to_given_basket() {
-        ShoppingBasket basket = new ShoppingBasket();
+        ShoppingBasket basket = new ShoppingBasket(USER_ID);
         when(shoppingBasketRepository.findOrCreateFor(USER_ID)).thenReturn(basket);
         service.addItem(USER_ID, PRODUCT_ID, QUANTITY);
 
