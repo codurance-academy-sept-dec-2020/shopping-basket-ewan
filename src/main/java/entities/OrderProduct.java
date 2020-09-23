@@ -1,18 +1,15 @@
 package entities;
 
-import java.time.LocalDate;
-import java.util.List;
-
-public class ShoppingBasket {
-    public LocalDate getCreatedAt() {
+public class OrderProduct {
+    public int getQuantity() {
         throw new UnsupportedOperationException();
     }
 
-    public List<OrderProduct> getProducts() {
+    public int getProductUnitCost() {
         throw new UnsupportedOperationException();
     }
 
-    public int getTotal() {
+    public int getOrderProductTotal() {
         throw new UnsupportedOperationException();
     }
 }
