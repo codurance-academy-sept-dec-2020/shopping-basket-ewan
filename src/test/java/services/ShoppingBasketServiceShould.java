@@ -26,11 +26,4 @@ public class ShoppingBasketServiceShould {
         service.basketFor(userId);
         verify(shoppingBasketRepository).getBasketFor(userId);
     }
-
-    @Test
-    void requess_users_basket_from_repository() throws NoBasketException {
-        UserID userId = new UserID();
-        service.basketFor(userId);
-        verify(shoppingBasketRepository).getBasketFor(userId);
-    }
 }
