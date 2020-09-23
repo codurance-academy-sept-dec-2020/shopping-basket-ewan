@@ -1,4 +1,4 @@
-package respositories;
+package repositories;
 
 import entities.ShoppingBasket;
 import entities.UserID;

@@ -10,8 +10,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import repositories.InMemoryOrderProductRepository;
 import repositories.InMemoryProductRepository;
-import respositories.InMemoryShoppingBasketRepository;
-import respositories.ShoppingBasketRepository;
+import repositories.InMemoryShoppingBasketRepository;
+import repositories.ShoppingBasketRepository;
 import services.OrderProductService;
 import services.ShoppingBasketService;
 

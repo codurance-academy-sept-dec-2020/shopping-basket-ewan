@@ -5,7 +5,7 @@ import entities.ShoppingBasket;
 import entities.UserID;
 import exceptions.NoBasketException;
 import exceptions.ProductNotFoundException;
-import respositories.ShoppingBasketRepository;
+import repositories.ShoppingBasketRepository;
 
 public class ShoppingBasketService {
     private ShoppingBasketRepository shoppingBasketRepository;

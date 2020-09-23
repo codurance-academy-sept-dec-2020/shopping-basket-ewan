@@ -6,13 +6,8 @@ import entities.UserID;
 import exceptions.NoBasketException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import respositories.InMemoryShoppingBasketRepository;
-
-import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
 
 public class InMemoryShoppingBasketRepositoryShould {
     private static final UserID USER_ID = new UserID();
