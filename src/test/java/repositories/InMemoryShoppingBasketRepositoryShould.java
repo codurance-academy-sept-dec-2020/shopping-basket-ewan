@@ -1,13 +1,18 @@
 package repositories;
 
+import entities.DateCreator;
 import entities.ShoppingBasket;
 import entities.UserID;
 import exceptions.NoBasketException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import respositories.InMemoryShoppingBasketRepository;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 public class InMemoryShoppingBasketRepositoryShould {
     private static final UserID USER_ID = new UserID();
@@ -16,12 +21,19 @@ public class InMemoryShoppingBasketRepositoryShould {
 
     @BeforeEach
     void setUp() {
-        repo = new InMemoryShoppingBasketRepository();
+        repo = new InMemoryShoppingBasketRepository(new DateCreator());
     }
 
     @Test
     void throws_exception_if_no_basket_for_user() {
         assertThrows(NoBasketException.class, () -> repo.getBasketFor(USER_ID));
+    }
+
+    @Test
+    void returns_user_basket_if_exists() throws NoBasketException {
+        repo.findOrCreateFor(USER_ID);
+        ShoppingBasket basket = repo.getBasketFor(USER_ID);
+        assertNotNull(basket);
     }
 
     @Test

@@ -1,34 +1,47 @@
 package entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingBasket {
     private BasketID basketID;
     private UserID userId;
+    private List<OrderProduct> orderProducts;
+    private LocalDate createdAt;
 
-    public ShoppingBasket(UserID userId) {
+    public ShoppingBasket(UserID userId, LocalDate createdAt) {
         this.userId = userId;
+        this.createdAt = createdAt;
         basketID = new BasketID();
+        orderProducts = new ArrayList<>();
     }
 
     public LocalDate getCreatedAt() {
-        throw new UnsupportedOperationException();
+        return createdAt;
     }
 
-    public List<OrderProduct> getProducts() {
-        throw new UnsupportedOperationException();
+    public List<OrderProduct> getOrderProducts() {
+        return orderProducts;
     }
 
     public int getTotal() {
-        throw new UnsupportedOperationException();
+        int total = 0;
+        for (OrderProduct orderProduct : orderProducts) {
+            total += orderProduct.getOrderProductTotal();
+        }
+        return total;
     }
 
-    public BasketID getBasketId() {
+    public BasketID getID() {
         return basketID;
     }
 
     public UserID getUserId() {
         return userId;
+    }
+
+    public void addProducts(List<OrderProduct> productsForBasket) {
+        orderProducts.addAll(productsForBasket);
     }
 }

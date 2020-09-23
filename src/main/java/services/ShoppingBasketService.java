@@ -4,6 +4,7 @@ import entities.ProductID;
 import entities.ShoppingBasket;
 import entities.UserID;
 import exceptions.NoBasketException;
+import exceptions.ProductNotFoundException;
 import respositories.ShoppingBasketRepository;
 
 public class ShoppingBasketService {
@@ -16,11 +17,13 @@ public class ShoppingBasketService {
     }
 
     public ShoppingBasket basketFor(UserID userId) throws NoBasketException {
-        return shoppingBasketRepository.getBasketFor(userId);
+        ShoppingBasket basket = shoppingBasketRepository.getBasketFor(userId);
+        basket.addProducts(orderProductService.getProductsForBasket(basket.getID()));
+        return basket;
     }
 
-    public void addItem(UserID userId, ProductID productID, int quantity) {
+    public void addItem(UserID userId, ProductID productID, int quantity) throws ProductNotFoundException {
         ShoppingBasket basket = shoppingBasketRepository.findOrCreateFor(userId);
-        orderProductService.addProductsToBasket(basket.getBasketId(), productID, quantity);
+        orderProductService.addProductsToBasket(basket.getID(), productID, quantity);
     }
 }
