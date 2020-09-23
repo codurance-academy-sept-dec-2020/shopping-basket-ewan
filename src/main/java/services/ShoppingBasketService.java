@@ -8,16 +8,19 @@ import respositories.ShoppingBasketRepository;
 
 public class ShoppingBasketService {
     private ShoppingBasketRepository shoppingBasketRepository;
+    private OrderProductService orderProductService;
 
-    public ShoppingBasketService(ShoppingBasketRepository shoppingBasketRepository) {
+    public ShoppingBasketService(ShoppingBasketRepository shoppingBasketRepository, OrderProductService orderProductService) {
         this.shoppingBasketRepository = shoppingBasketRepository;
+        this.orderProductService = orderProductService;
     }
 
     public ShoppingBasket basketFor(UserID userId) throws NoBasketException {
         return shoppingBasketRepository.getBasketFor(userId);
     }
 
-    public void addItem(UserID userId, ProductID productID, int quanity) {
-        throw new UnsupportedOperationException();
+    public void addItem(UserID userId, ProductID productID, int quantity) {
+        ShoppingBasket basket = shoppingBasketRepository.findOrCreateFor(userId);
+        orderProductService.addProductsToBasket(basket.getBasketId(), productID, quantity);
     }
 }

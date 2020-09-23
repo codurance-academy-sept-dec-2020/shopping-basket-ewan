@@ -9,4 +9,8 @@ public class InMemoryShoppingBasketRepository implements ShoppingBasketRepositor
     public ShoppingBasket getBasketFor(UserID userId) throws NoBasketException {
         throw new NoBasketException();
     }
+
+    public ShoppingBasket findOrCreateFor(UserID userId) {
+        throw new UnsupportedOperationException();
+    }
 }

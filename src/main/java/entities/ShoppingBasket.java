@@ -4,6 +4,12 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class ShoppingBasket {
+    private BasketID basketID;
+
+    public ShoppingBasket() {
+        basketID = new BasketID();
+    }
+
     public LocalDate getCreatedAt() {
         throw new UnsupportedOperationException();
     }
@@ -14,5 +20,9 @@ public class ShoppingBasket {
 
     public int getTotal() {
         throw new UnsupportedOperationException();
+    }
+
+    public BasketID getBasketId() {
+        return basketID;
     }
 }
