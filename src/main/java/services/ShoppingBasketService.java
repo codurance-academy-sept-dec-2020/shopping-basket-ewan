@@ -2,9 +2,17 @@ package services;
 
 import entities.ShoppingBasket;
 import entities.UserID;
+import exceptions.NoBasketException;
+import respositories.ShoppingBasketRepository;
 
 public class ShoppingBasketService {
-    public ShoppingBasket basketFor(UserID userId) {
-        throw new UnsupportedOperationException();
+    private ShoppingBasketRepository shoppingBasketRepository;
+
+    public ShoppingBasketService(ShoppingBasketRepository shoppingBasketRepository) {
+        this.shoppingBasketRepository = shoppingBasketRepository;
+    }
+
+    public ShoppingBasket basketFor(UserID userId) throws NoBasketException {
+        return shoppingBasketRepository.getBasketFor(userId);
     }
 }
