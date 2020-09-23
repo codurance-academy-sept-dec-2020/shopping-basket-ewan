@@ -11,6 +11,6 @@ public class InMemoryShoppingBasketRepository implements ShoppingBasketRepositor
     }
 
     public ShoppingBasket findOrCreateFor(UserID userId) {
-        throw new UnsupportedOperationException();
+        return new ShoppingBasket();
     }
 }
